@@ -24,7 +24,7 @@ public class Les2HW {
             sY= rY-dY;
         }    else { sY = dY - rY;}
         XY = sY*sY + sX*sX ;
-        if (XY <= rad){
+        if (XY/XY <= rad){
             System.out.println("Принадлежит окружности");
         } else {
             System.out.println("Не принадлежит окружности");
