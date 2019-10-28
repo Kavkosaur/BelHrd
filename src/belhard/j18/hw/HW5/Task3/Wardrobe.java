@@ -2,10 +2,11 @@ package belhard.j18.hw.HW5.Task3;
 
 public class Wardrobe {
     int amm;
-    Shelf shelves[];
+    Shelf[] shelves;
 
     public Wardrobe(int amm) {
         this.amm = amm;
+        shelves = new Shelf[amm];
         for (int i = 0; i < amm - 1; i++) {
             Shelf newShelf = new Shelf();
             this.shelves[i] = newShelf;
@@ -16,41 +17,33 @@ public class Wardrobe {
 
     public void Put(int x, Clothes clothes) {
         if (x <= amm - 1) {
-            if (clothes.in != ClInside.In) {
-                if (shelves[x].in != Insides.Something) {
-                    shelves[x].in = Insides.Something;
-                    shelves[x].item = clothes.name;
-                    clothes.in = ClInside.In;
-
-                } else {
-                    System.out.println("Полка занята");
-                }
+            if (shelves[x].in != Insides.Something) {
+                shelves[x].in = Insides.Something;
+                shelves[x].item = clothes.name;
 
             } else {
-                System.out.println("Эта вещь уже где то лежит");
+                System.out.println("Полка занята");
             }
+
+
         } else {
             System.out.println("Такой полки то нет");
         }
-
     }
 
+
     public void Throw(Clothes clothes) {
-        if (clothes.in != ClInside.In) {
-            for (int i = 0; i < this.amm - 1; i++) {
-                if (shelves[i].in != Insides.Something) {
-                    shelves[i].in = Insides.Something;
-                    shelves[i].item = clothes.name;
-                    clothes.in = ClInside.In;
+        for (int i = 0; i < this.amm - 1; i++) {
+            if (shelves[i].in != Insides.Something) {
+                shelves[i].in = Insides.Something;
+                shelves[i].item = clothes.name;
+                break;
 
-                } else {
-                    System.out.println("Полка занята");
-                }
+            } else {
+                System.out.println("Полка занята");
             }
-
-        } else {
-            System.out.println("Эта вещь уже где то лежит");
         }
+
 
     }
 
